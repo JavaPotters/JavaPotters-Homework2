@@ -1,6 +1,7 @@
 package com.ironhack.homework_2.Classes;
 
 public class Lead {
+    private long idLead;
     private String name;
     private long phoneNumber;
     private String email;
@@ -9,6 +10,7 @@ public class Lead {
     // Constructor method
 
     public Lead(String name, long phoneNumber, String email, Account companyName) {
+        // Create idLead
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -47,6 +49,14 @@ public class Lead {
 
     public void setCompanyName(Account companyName) {
         this.companyName = companyName;
+    }
+
+    public long getIdLead() {
+        return idLead;
+    }
+
+    public void setIdLead(long idLead) {
+        this.idLead = idLead;
     }
 }
 

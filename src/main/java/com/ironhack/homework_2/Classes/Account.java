@@ -5,7 +5,7 @@ import com.ironhack.homework_2.Enumerations.IndustryEnum;
 import java.util.List;
 
 public class Account {
-    private long id;
+    private long idAccount;
     private IndustryEnum industryEnum;
     private int employeeAccount;
     private String city;
@@ -16,9 +16,9 @@ public class Account {
     // Constructor method
 
 
-    public Account(long id, IndustryEnum industryEnum, int employeeAccount, String city, String country,
+    public Account(long idAccount, IndustryEnum industryEnum, int employeeAccount, String city, String country,
                    List<Contact> contactList, List<Opportunity> opportunityList) {
-        this.id = id;
+        this.idAccount = idAccount;
         this.industryEnum = industryEnum;
         this.employeeAccount = employeeAccount;
         this.city = city;
@@ -30,12 +30,12 @@ public class Account {
     // Getters and Setters
 
 
-    public long getId() {
-        return id;
+    public long getIdAccount() {
+        return idAccount;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdAccount(long idAccount) {
+        this.idAccount = idAccount;
     }
 
     public IndustryEnum getIndustry() {
