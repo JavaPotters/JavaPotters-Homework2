@@ -1,20 +1,23 @@
 package com.ironhack.homework_2.Classes;
 
+import com.ironhack.homework_2.Enumerations.ProductEnum;
+import com.ironhack.homework_2.Enumerations.StatusEnum;
+
 public class Opportunity {
     private long idOpportunity;
-    private Enum product;
+    private ProductEnum productEnum;
     private int quantity;
     private Contact decisionMaker;
-    private Enum status;
+    private StatusEnum statusEnum;
 
     // Constructor method
 
-    public Opportunity(long idOpportunity, Enum product, int quantity, Contact decisionMaker, Enum status) {
+    public Opportunity(long idOpportunity, ProductEnum product, int quantity, Contact decisionMaker, StatusEnum status) {
         this.idOpportunity = idOpportunity;
-        this.product = product;
+        this.productEnum = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
-        this.status = status;
+        this.statusEnum = status;
     }
 
     // Getters and Setters
@@ -28,12 +31,12 @@ public class Opportunity {
         this.idOpportunity = idOpportunity;
     }
 
-    public Enum getProduct() {
-        return product;
+    public ProductEnum getProduct() {
+        return productEnum;
     }
 
-    public void setProduct(Enum product) {
-        this.product = product;
+    public void setProduct(ProductEnum product) {
+        this.productEnum = product;
     }
 
     public int getQuantity() {
@@ -52,12 +55,12 @@ public class Opportunity {
         this.decisionMaker = decisionMaker;
     }
 
-    public Enum getStatus() {
-        return status;
+    public StatusEnum getStatus() {
+        return statusEnum;
     }
 
-    public void setStatus(Enum status) {
-        this.status = status;
+    public void setStatus(StatusEnum status) {
+        this.statusEnum = status;
     }
 }
 

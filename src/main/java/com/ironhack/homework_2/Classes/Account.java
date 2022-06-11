@@ -38,12 +38,12 @@ public class Account {
         this.id = id;
     }
 
-    public Enum getIndustry() {
-        return industry;
+    public IndustryEnum getIndustry() {
+        return industryEnum;
     }
 
-    public void setIndustry(Enum industry) {
-        this.industry = industry;
+    public void setIndustry(IndustryEnum industry) {
+        this.industryEnum = industry;
     }
 
     public int getEmployeeAccount() {
