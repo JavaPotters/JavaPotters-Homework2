@@ -1,10 +1,12 @@
 package com.ironhack.homework_2.Classes;
 
+import com.ironhack.homework_2.Enumerations.IndustryEnum;
+
 import java.util.List;
 
 public class Account {
     private long id;
-    private Enum industry;
+    private IndustryEnum industryEnum;
     private int employeeAccount;
     private String city;
     private String country;
@@ -14,10 +16,10 @@ public class Account {
     // Constructor method
 
 
-    public Account(long id, Enum industry, int employeeAccount, String city, String country,
+    public Account(long id, IndustryEnum industryEnum, int employeeAccount, String city, String country,
                    List<Contact> contactList, List<Opportunity> opportunityList) {
         this.id = id;
-        this.industry = industry;
+        this.industryEnum = industryEnum;
         this.employeeAccount = employeeAccount;
         this.city = city;
         this.country = country;
