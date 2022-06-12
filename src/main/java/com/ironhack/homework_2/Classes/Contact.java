@@ -1,55 +1,19 @@
 package com.ironhack.homework_2.Classes;
 
-public class Contact {
+public class Contact extends Lead{
     private long idContact;
-    private String  name;
-    private long phoneNumber;
-    private String email;
-    private Account companyName;
+    private static int idCounter= 1;
 
-    // Constructor method
+    private long generateIdContact() {
 
-    public Contact(String name, long phoneNumber, String email, Account companyName) {
-        //create id contact
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.companyName = companyName;
+        int idContact = idCounter++;
+
+        return idContact;
     }
 
-    // Getters and setters
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Account getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(Account companyName) {
-        this.companyName = companyName;
+    public Contact(String name, long phoneNumber, String email, String companyName) {
+        super(name, phoneNumber, email, companyName);
+        this.idContact = generateIdContact();
     }
 
     public long getIdContact() {
@@ -58,5 +22,13 @@ public class Contact {
 
     public void setIdContact(long idContact) {
         this.idContact = idContact;
+    }
+
+    public static int getIdCounter() {
+        return idCounter;
+    }
+
+    public static void setIdCounter(int idCounter) {
+        Contact.idCounter = idCounter;
     }
 }

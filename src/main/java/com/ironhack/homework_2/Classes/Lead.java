@@ -5,11 +5,20 @@ public class Lead {
     private String name;
     private long phoneNumber;
     private String email;
-    private Account companyName;
+    private String companyName;
+    private static long idCounter= 1;
+
+   private long generateIdLead(){
+
+        long idLead = idCounter++;
+
+        return idLead;
+
+    }
 
     // Constructor method
 
-    public Lead(String name, long phoneNumber, String email, Account companyName) {
+    public Lead(String name, long phoneNumber, String email, String companyName) {
         // Create idLead
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -43,11 +52,11 @@ public class Lead {
         this.email = email;
     }
 
-    public Account getCompanyName() {
+    public String getCompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(Account companyName) {
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 

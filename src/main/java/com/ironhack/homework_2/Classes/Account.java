@@ -2,6 +2,7 @@ package com.ironhack.homework_2.Classes;
 
 import com.ironhack.homework_2.Enumerations.IndustryEnum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -13,22 +14,55 @@ public class Account {
     private List<Contact> contactList;
     private List<Opportunity> opportunityList;
 
+    private String companyName;
+
+    private static long idCounter= 1;
+
+    private long generateIdAccount(){
+
+        long idAccount = idCounter++;
+
+        return idAccount;
+    }
+
+    public void addContact(Contact contact){
+        contactList.add(contact);
+    }
+    public void addOpportunity(Opportunity opportunity){
+        opportunityList.add(opportunity);
+    }
+
     // Constructor method
 
-
-    public Account(long idAccount, IndustryEnum industryEnum, int employeeAccount, String city, String country,
-                   List<Contact> contactList, List<Opportunity> opportunityList) {
-        this.idAccount = idAccount;
+    public Account(IndustryEnum industryEnum, int employeeAccount, String city, String country, String companyName) {
         this.industryEnum = industryEnum;
         this.employeeAccount = employeeAccount;
         this.city = city;
         this.country = country;
-        this.contactList = contactList;
-        this.opportunityList = opportunityList;
+        this.companyName = companyName;
+        this.opportunityList = new ArrayList<>();
+        this.contactList = new ArrayList<>();
     }
+
 
     // Getters and Setters
 
+
+    public IndustryEnum getIndustryEnum() {
+        return industryEnum;
+    }
+
+    public void setIndustryEnum(IndustryEnum industryEnum) {
+        this.industryEnum = industryEnum;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public long getIdAccount() {
         return idAccount;

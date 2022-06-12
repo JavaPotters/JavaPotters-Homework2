@@ -9,11 +9,20 @@ public class Opportunity {
     private int quantity;
     private Contact decisionMaker;
     private StatusEnum statusEnum;
+    private static long idCounter= 1;
+
+    private long generateIdOpportunity(){
+
+        long idOpportunity = idCounter++;
+
+        return idOpportunity;
+
+    }
 
     // Constructor method
 
-    public Opportunity(long idOpportunity, ProductEnum product, int quantity, Contact decisionMaker, StatusEnum status) {
-        this.idOpportunity = idOpportunity;
+    public Opportunity(ProductEnum product, int quantity, Contact decisionMaker, StatusEnum status) {
+        this.idOpportunity = generateIdOpportunity();
         this.productEnum = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
