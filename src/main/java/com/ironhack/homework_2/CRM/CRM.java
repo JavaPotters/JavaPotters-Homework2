@@ -17,12 +17,14 @@ public class CRM {
     private List<Account> accountList;
 
     private List<Lead> leadList;
+    private int countLeads;
 
     public CRM() {
         contactList = new ArrayList<>();
         opportunityList = new ArrayList<>();
         accountList = new ArrayList<>();
         leadList = new ArrayList<>();
+        countLeads = 0;
     }
 
     public Contact createContact(Lead lead){
@@ -35,6 +37,7 @@ public class CRM {
     }
     public void deleteLead(Lead lead){
         leadList.remove(lead);
+        countLeads--;
 
     }
     public Account findAccount(String companyName){
@@ -82,6 +85,22 @@ public class CRM {
         }else{
             System.out.println("The opportunity was not found");
         }
+    }
+
+    public void trackingLeads(){
+        for(Lead lead: leadList){
+            System.out.println(lead.getIdLead());
+            countLeads++;
+        }
+        System.out.println("There are "+ countLeads+" leads");
+    }
+
+    public ArrayList<Lead> showListLead(){
+
+        for(Lead lead: leadList){
+            System.out.println(lead);
+        }
+        return (ArrayList<Lead>) leadList;
     }
 }
 

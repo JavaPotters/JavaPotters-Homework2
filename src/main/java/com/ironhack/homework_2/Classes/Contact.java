@@ -31,4 +31,6 @@ public class Contact extends Lead{
     public static void setIdCounter(int idCounter) {
         Contact.idCounter = idCounter;
     }
+
+
 }

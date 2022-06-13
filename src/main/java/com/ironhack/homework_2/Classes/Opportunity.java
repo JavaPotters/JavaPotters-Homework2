@@ -71,5 +71,16 @@ public class Opportunity {
     public void setStatus(StatusEnum status) {
         this.statusEnum = status;
     }
+
+    @Override
+    public String toString() {
+        return "Opportunity{" +
+                "idOpportunity=" + idOpportunity +
+                ", productEnum=" + productEnum +
+                ", quantity=" + quantity +
+                ", decisionMaker=" + decisionMaker +
+                ", statusEnum=" + statusEnum +
+                '}';
+    }
 }
 

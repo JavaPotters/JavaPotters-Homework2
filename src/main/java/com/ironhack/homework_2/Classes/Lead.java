@@ -67,5 +67,16 @@ public class Lead {
     public void setIdLead(long idLead) {
         this.idLead = idLead;
     }
+
+    @Override
+    public String toString() {
+        return "Lead{" +
+                "idLead=" + idLead +
+                ", name='" + name + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }
 

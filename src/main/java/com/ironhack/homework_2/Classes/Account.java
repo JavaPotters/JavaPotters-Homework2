@@ -119,6 +119,20 @@ public class Account {
     public void setOpportunityList(List<Opportunity> opportunityList) {
         this.opportunityList = opportunityList;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "idAccount=" + idAccount +
+                ", industryEnum=" + industryEnum +
+                ", employeeAccount=" + employeeAccount +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", contactList=" + contactList +
+                ", opportunityList=" + opportunityList +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }
 
 
