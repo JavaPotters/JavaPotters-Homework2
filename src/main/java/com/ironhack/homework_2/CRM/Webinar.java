@@ -15,9 +15,6 @@ public class Webinar {
     private String companyName;
     private List<String> leadData;
 
-
-
-
     public Lead signingUp() {
         leadData = getInputData("Introduce your name: \n","Introduce your phone number \n", "Introduce your email \n", "Introduce your company name\n");
         Lead lead = new Lead(leadData.get(0),Long.parseLong(leadData.get(1)) , leadData.get(2), leadData.get(3));

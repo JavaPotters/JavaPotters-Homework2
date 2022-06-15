@@ -15,7 +15,6 @@ public class CRM {
     private List<Contact> contactList;
     private List<Opportunity> opportunityList;
     private List<Account> accountList;
-
     private List<Lead> leadList;
     private int countLeads;
 
@@ -27,19 +26,91 @@ public class CRM {
         countLeads = 0;
     }
 
+    // Contact's methods
+
     public Contact createContact(Lead lead){
         Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
         return contact;
     }
+
+    // Opportunity's methods
+
     public Opportunity createOpportunity(Contact contact, ProductEnum productEnum, int quantity){
         Opportunity opportunity = new Opportunity(productEnum, quantity, contact, StatusEnum.OPEN);
+        opportunityList.add(opportunity);
         return opportunity;
     }
+
+    public void addOpportunity (Opportunity opportunity) {
+        opportunityList.add(opportunity);
+    }
+
+    public Opportunity lookUpOpportunity(long idOpportunity){
+        for (Opportunity opportunity: opportunityList){
+            if(idOpportunity == opportunity.getIdOpportunity()){
+                return opportunity;
+            }
+        }
+        return null;
+    }
+
+    public Opportunity closeOpportunity(String statusOpportunity, long idOpportunity){
+        Opportunity opportunity = lookUpOpportunity(idOpportunity);
+        if(opportunity != null){
+            if(statusOpportunity.equalsIgnoreCase("lost")){
+                opportunity.setStatus(StatusEnum.CLOSED_LOST);
+            } else if (statusOpportunity.equalsIgnoreCase("Won")) {
+                opportunity.setStatus(StatusEnum.CLOSED_WON);
+            }
+        }else{
+            System.out.println("The opportunity was not found");
+        }
+        return opportunity;
+    }
+
+    public void showListOpportunity(){
+
+        for(Opportunity opportunity: opportunityList){
+            System.out.println(opportunity);
+        }
+    }
+
+    // Lead's methods
+
+    public void addLead(Lead lead) {
+        leadList.add(lead);
+    }
+
+    public Lead findLead(int id){
+        for (Lead lead: leadList){
+            if(id == lead.getIdLead()){
+                return lead;
+            }
+        }
+        return null;
+    }
+    public void showListLead(){
+
+        for(Lead lead: leadList){
+            System.out.println(lead);
+        }
+    }
+
     public void deleteLead(Lead lead){
         leadList.remove(lead);
         countLeads--;
 
     }
+    public void trackingLeads(){
+        for(Lead lead: leadList){
+            System.out.println(lead.getIdLead());
+            countLeads++;
+        }
+        System.out.println("There are "+ countLeads+" leads");
+    }
+
+    // Account's leads
+
     public Account findAccount(String companyName){
         for (Account account: accountList){
             if(companyName.equals(account.getCompanyName())){
@@ -55,53 +126,18 @@ public class CRM {
         if(account != null){
             account.addContact(contact);
             account.addOpportunity(opportunity);
+            accountList.add(account);
             return account;
         }else {
             Account account2 = new Account(industryEnum, employeeCount, city, country, contact.getCompanyName());
             account2.addContact(contact);
             account2.addOpportunity(opportunity);
+            accountList.add(account2);
             return account2;
         }
 
     }
 
-    public Opportunity lookUpOpportunity(long idOpportunity){
-        for (Opportunity opportunity: opportunityList){
-            if(idOpportunity == opportunity.getIdOpportunity()){
-                return opportunity;
-            }
-        }
-        return null;
-    }
-
-    public void closeOpportunity(String statusOpportunity, long idOpportunity){
-        Opportunity opportunity = lookUpOpportunity(idOpportunity);
-        if(opportunity != null){
-            if(statusOpportunity.equalsIgnoreCase("lost")){
-                opportunity.setStatus(StatusEnum.CLOSED_LOST);
-            } else if (statusOpportunity.equalsIgnoreCase("Won")) {
-                opportunity.setStatus(StatusEnum.CLOSED_WON);
-            }
-        }else{
-            System.out.println("The opportunity was not found");
-        }
-    }
-
-    public void trackingLeads(){
-        for(Lead lead: leadList){
-            System.out.println(lead.getIdLead());
-            countLeads++;
-        }
-        System.out.println("There are "+ countLeads+" leads");
-    }
-
-    public ArrayList<Lead> showListLead(){
-
-        for(Lead lead: leadList){
-            System.out.println(lead);
-        }
-        return (ArrayList<Lead>) leadList;
-    }
 }
 
 

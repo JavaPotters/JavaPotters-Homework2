@@ -1,12 +1,14 @@
 package com.ironhack.homework_2.Classes;
 
+import java.util.Objects;
+
 public class Lead {
-    private long idLead;
-    private String name;
-    private long phoneNumber;
-    private String email;
-    private String companyName;
-    private static long idCounter= 1;
+    protected long idLead;
+    protected String name;
+    protected long phoneNumber;
+    protected String email;
+    protected String companyName;
+    protected static long idCounter= 1;
 
    private long generateIdLead(){
 
@@ -68,6 +70,7 @@ public class Lead {
         this.idLead = idLead;
     }
 
+    /*
     @Override
     public String toString() {
         return "Lead{" +
@@ -77,6 +80,21 @@ public class Lead {
                 ", email='" + email + '\'' +
                 ", companyName='" + companyName + '\'' +
                 '}';
+    }
+
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lead lead = (Lead) o;
+        return idLead == lead.idLead && phoneNumber == lead.phoneNumber && name.equals(lead.name) && email.equals(lead.email) && companyName.equals(lead.companyName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idLead, name, phoneNumber, email, companyName);
     }
 }
 

@@ -1,5 +1,7 @@
 package com.ironhack.homework_2.Classes;
 
+import java.util.Objects;
+
 public class Contact extends Lead{
     private long idContact;
     private static int idCounter= 1;
@@ -32,5 +34,28 @@ public class Contact extends Lead{
         Contact.idCounter = idCounter;
     }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "idContact=" + idContact +
+                ", idLead=" + idLead +
+                ", name='" + name + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return idContact == contact.idContact;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idContact, name, phoneNumber, email, companyName);
+    }
 }
