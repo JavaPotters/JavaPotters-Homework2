@@ -60,6 +60,14 @@ public class Main {
                             System.out.println("How many trucks does the lead want? ");
                             int productQuantity = myScanner.nextInt();
 
+                            /*
+                            try {System.out.println("How many trucks does the lead want? ");
+                                int productQuantity = myScanner.nextInt();}
+                            catch (Exception e) {
+                                e.getMessage();
+                            }
+                             */
+
                             // añadir validaciones
                             System.out.println("Which of our products? \n" +
                                     "1. HYBRID,\n" +

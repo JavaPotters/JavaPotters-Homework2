@@ -7,8 +7,6 @@ import com.ironhack.homework_2.Classes.Opportunity;
 import com.ironhack.homework_2.Enumerations.IndustryEnum;
 import com.ironhack.homework_2.Enumerations.ProductEnum;
 import com.ironhack.homework_2.Enumerations.StatusEnum;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,16 +23,16 @@ class CRMTest {
 
     @BeforeEach
     void setUp() {
-         contact = new Contact("Mike", 634477559, "mike@irontruck.com",
-                 "Irontruck");
-         opportunity = new Opportunity(ProductEnum.HYBRID, 30, contact, StatusEnum.OPEN);
-         lead1 = new Lead("Mike", 634477559, "mike@irontruck.com",
-                 "Irontruck");
-         lead2 = new Lead("Bob", 636798559, "bob@mcgee.com",
+        contact = new Contact("Mike", 634477559, "mike@irontruck.com",
+                "Irontruck");
+        opportunity = new Opportunity(ProductEnum.HYBRID, 30, contact, StatusEnum.OPEN);
+        lead1 = new Lead("Mike", 634477559, "mike@irontruck.com",
+                "Irontruck");
+        lead2 = new Lead("Bob", 636798559, "bob@mcgee.com",
                 "McGee");
-         account = new Account(IndustryEnum.MANUFACTURING, 12, "Sevilla", "España",
-                 "Irontruck");
-         crm = new CRM();
+        account = new Account(IndustryEnum.MANUFACTURING, 12, "Sevilla", "España",
+                "Irontruck");
+        crm = new CRM();
     }
 
     @Test

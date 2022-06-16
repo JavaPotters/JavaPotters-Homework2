@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="956b99ba-96dd-468c-b354-b2e6c763896d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ironhack/homework_2/CRM/CRMTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/Webinar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/Webinar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Classes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Classes/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Classes/Lead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Classes/Lead.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +42,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/s.la.fuente.maschi/OneDrive - Accenture/Documents/Java Bootcamp/Cloned repositories/JavaPotters-Homework2"
+    "last_opened_file_path": "C:/Users/s.la.fuente.maschi/OneDrive - Accenture/Documents/Java Bootcamp/Cloned repositories/lesson-maven-test"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -56,7 +53,7 @@
       <recent name="com.ironhack.homework_2.CRM" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CRMTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ironhack.homework_2.Main.Main" />
       <module name="JavaPotters-Homework2" />
@@ -135,8 +132,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CRMTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CRMTest.lookUpOpportunity" />
         <item itemvalue="JUnit.CRMTest.createAccount" />
         <item itemvalue="JUnit.CRMTest.findAccount" />
@@ -164,5 +161,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JavaPotters_Homework2$CRMTest.ic" NAME="CRMTest Coverage Results" MODIFIED="1655400612288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ironhack.homework_2.CRM.*</FILTER>
+    </SUITE>
   </component>
 </project>
