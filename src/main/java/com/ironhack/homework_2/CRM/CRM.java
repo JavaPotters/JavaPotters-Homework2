@@ -79,9 +79,10 @@ public class CRM {
 
     public void addLead(Lead lead) {
         leadList.add(lead);
+        countLeads++;
     }
 
-    public Lead findLead(int id){
+    public Lead findLead(long id){
         for (Lead lead: leadList){
             if(id == lead.getIdLead()){
                 return lead;
@@ -102,11 +103,20 @@ public class CRM {
 
     }
     public void trackingLeads(){
+        countLeads = 0;
         for(Lead lead: leadList){
-            System.out.println(lead.getIdLead());
+            System.out.println("The lead's ID is: " + lead.getIdLead());
             countLeads++;
         }
-        System.out.println("There are "+ countLeads+" leads");
+        System.out.println("There are " + countLeads + " leads");
+    }
+
+    public int getCountLeads() {
+        return countLeads;
+    }
+
+    public void setCountLeads(int countLeads) {
+        this.countLeads = countLeads;
     }
 
     // Account's leads
@@ -136,6 +146,10 @@ public class CRM {
             return account2;
         }
 
+    }
+
+    public void addAccount(Account account) {
+        accountList.add(account);
     }
 
 }

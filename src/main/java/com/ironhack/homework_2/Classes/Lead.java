@@ -8,7 +8,7 @@ public class Lead {
     protected long phoneNumber;
     protected String email;
     protected String companyName;
-    protected static long idCounter= 1;
+    protected static long idCounter;
 
    private long generateIdLead(){
 
@@ -21,7 +21,7 @@ public class Lead {
     // Constructor method
 
     public Lead(String name, long phoneNumber, String email, String companyName) {
-        // Create idLead
+        this.idLead = generateIdLead();
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -70,7 +70,6 @@ public class Lead {
         this.idLead = idLead;
     }
 
-    /*
     @Override
     public String toString() {
         return "Lead{" +
@@ -81,8 +80,6 @@ public class Lead {
                 ", companyName='" + companyName + '\'' +
                 '}';
     }
-
-     */
 
     @Override
     public boolean equals(Object o) {

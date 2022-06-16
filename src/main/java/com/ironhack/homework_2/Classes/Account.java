@@ -4,6 +4,7 @@ import com.ironhack.homework_2.Enumerations.IndustryEnum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Account {
     private long idAccount;
@@ -132,6 +133,19 @@ public class Account {
                 ", opportunityList=" + opportunityList +
                 ", companyName='" + companyName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return idAccount == account.idAccount && employeeAccount == account.employeeAccount && industryEnum == account.industryEnum && Objects.equals(city, account.city) && Objects.equals(country, account.country) && Objects.equals(companyName, account.companyName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idAccount, industryEnum, employeeAccount, city, country, companyName);
     }
 }
 
