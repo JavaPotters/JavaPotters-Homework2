@@ -10,12 +10,10 @@ import com.ironhack.homework_2.Enumerations.IndustryEnum;
 import com.ironhack.homework_2.Enumerations.ProductEnum;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
-
+public class MainMenu {
     public static void main(String[] args) {
         Webinar webinar = new Webinar();
 
@@ -25,16 +23,26 @@ public class Main {
         System.out.println("************* Starting CRM *************");
         System.out.println("What is your name?");
         String salesAssistName = myScanner2.nextLine();
-        System.out.println("Welcome to the CRM system, " + salesAssistName + ".\n" + options);
+        System.out.println("Welcome to the CRM system, " + salesAssistName + ".\n" +
+                "You can type: \n" +
+                "\033[3m- Signing-up:\033[0m to create a lead.\n" +
+                "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
+                "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
+                "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
+                "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
+                "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
+                "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n");
 
         CRM crm = new CRM();
+
+        // Get input from the user
 
         while (true) {
             Scanner myScanner = new Scanner(System.in);
             System.out.println("What do you want to do, " + salesAssistName + "?");
             String userInput = myScanner.nextLine();
+            //add some logic to here to determine what to do based on the userInput
             if(isAKeyWord(userInput)){
-                userInput = userInput.toLowerCase();
                 int id;
                 try{
                     String[] splited = userInput.split(" ");
@@ -45,10 +53,24 @@ public class Main {
                             Lead lead = crm.findLead(id);
                             Contact contact = crm.createContact(lead);
 
-                            int productQuantity = validInput("How many trucks does the lead want?");
-                            int productTypeInt = validInput("Which of our products? \n" +
-                                    "1. HYBRID,\n" + "2. FLATBED,\n" + "3. BOX");
+                            System.out.println("How many trucks does the lead want? ");
+                            int productQuantity = myScanner.nextInt();
 
+                            /*
+                            try {System.out.println("How many trucks does the lead want? ");
+                                int productQuantity = myScanner.nextInt();}
+                            catch (Exception e) {
+                                e.getMessage();
+                            }
+                             */
+
+                            // añadir validaciones
+                            System.out.println("Which of our products? \n" +
+                                    "1. HYBRID,\n" +
+                                    "2. FLATBED,\n" +
+                                    "3. BOX");
+
+                            int productTypeInt = myScanner.nextInt();
                             ProductEnum productEnum = null;
                             switch (productTypeInt){
                                 case 1:
@@ -64,10 +86,15 @@ public class Main {
 
                             Opportunity opportunity = crm.createOpportunity(contact, productEnum, productQuantity);
 
-                            int industryTypeInt = validInput("Which industry are the products for? \n" +
-                                    "1. PRODUCE\n" + "2. ECOMMERCE\n" + "3. MANUFACTURING\n" + "4. MEDICAL\n" +
-                                    "5. OTHER");
+                            // añadir validaciones
+                            System.out.println("Which industry are the products for? \n" +
+                                    "1. PRODUCE\n" +
+                                    "2. ECOMMERCE\n" +
+                                    "3. MANUFACTURING\n" +
+                                    "4. MEDICAL\n" +
+                                    "5. OTHER" );
 
+                            int industryTypeInt = myScanner.nextInt();
                             IndustryEnum industryEnum = null;
                             switch (industryTypeInt){
                                 case 1:
@@ -87,13 +114,12 @@ public class Main {
                                     break;
                             }
 
-                            int numEmployees = validInput("How many employees does the contact's company have?");
-                            List<String> companyData = getInputData(
+                            List<String> companyData = getInputData("How many employees does the contact's company have?",
                                     "\nIntroduce the city where the contact's company is located.",
                                     "\nIntroduce the country where the contact's company is located.");
 
-                            Account account = crm.createAccount(industryEnum, numEmployees,
-                                    companyData.get(0), companyData.get(1), contact, opportunity);
+                            Account account = crm.createAccount(industryEnum, Integer.parseInt(companyData.get(0)),
+                                    companyData.get(1), companyData.get(2), contact, opportunity);
                             crm.deleteLead(lead);
                             System.out.println("Convert done");
                             break;
@@ -123,16 +149,13 @@ public class Main {
                                 System.out.println("List of opportunities:  ");
                                 crm.showListOpportunity();
                             } else{
-                                System.out.println("Invalid option, please try again.");
                                 break;
                             }
                             break;
-                        case "signup":
+                        case "signing-up":
                             lead = webinar.signingUp();
                             crm.addLead(lead);
                             break;
-                        case "exit":
-                            System.exit(0);
                     }
                 } catch (ArrayIndexOutOfBoundsException e){
                     System.out.println("Please insert ID");
@@ -141,21 +164,19 @@ public class Main {
             }
             else {
                 System.out.println("Invalid option, please try again.");
-                System.out.println(options);
+                System.out.println("You can type: \n" +
+                        "\033[3m- Signing-up:\033[0m to create a lead.\n" +
+                        "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
+                        "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
+                        "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
+                        "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
+                        "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
+                        "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n");
             }
         }
     }
 
-    private static final String options = "You can type: \n" +
-            "\033[3m- Signup:\033[0m to create a lead.\n" +
-            "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
-            "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
-            "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
-            "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
-            "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
-            "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n"+
-            "\033[3m- Exit:\033[0m to finish the program.\n";
-    private static final String[] keyWords = {"convert", "lookup", "close-lost", "close-won", "show", "signup", "exit"};
+    private static final String[] keyWords = {"convert", "lookup", "close-lost", "close-won", "show", "signing-up"};
 
     public static boolean isAKeyWord(String str){
         String[] splited = str.split(" ");
@@ -177,21 +198,4 @@ public class Main {
         }
         return inputData;
     }
-
-    private static int validInput(String questions){
-        Scanner myScanner =  new Scanner(System.in);
-        int input = 0;
-
-        while (input <= 0){
-            try {System.out.println(questions);
-                input = myScanner.nextInt();
-            } catch (InputMismatchException ex) {
-                ex.getMessage();
-                System.out.println("INVALID OPTION! Please insert an int" );
-                myScanner =  new Scanner(System.in);
-            }
-        }
-        return input;
-    }
-
 }

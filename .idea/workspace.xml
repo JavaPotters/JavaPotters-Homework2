@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="956b99ba-96dd-468c-b354-b2e6c763896d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/CRMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ironhack/homework_2/CRM/CRMTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/Webinar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/CRM/Webinar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ironhack/homework_2/Main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -30,21 +28,23 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AREHtFp0GPqL5KuixOfHDAf69T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/s.la.fuente.maschi/OneDrive - Accenture/Documents/Java Bootcamp/Cloned repositories/lesson-maven-test"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/s.la.fuente.maschi/OneDrive - Accenture/Documents/Java Bootcamp/Cloned repositories/lesson-maven-test&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -53,7 +53,7 @@
       <recent name="com.ironhack.homework_2.CRM" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CRMTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ironhack.homework_2.Main.Main" />
       <module name="JavaPotters-Homework2" />
@@ -132,8 +132,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CRMTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CRMTest" />
         <item itemvalue="JUnit.CRMTest.lookUpOpportunity" />
         <item itemvalue="JUnit.CRMTest.createAccount" />
         <item itemvalue="JUnit.CRMTest.findAccount" />
