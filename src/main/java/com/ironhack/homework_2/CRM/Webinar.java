@@ -4,28 +4,20 @@ import com.ironhack.homework_2.Classes.Lead;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Webinar {
 
-    private String name;
-    private long phoneNumber;
-    private String email;
-    private String companyName;
-    private List<String> leadData;
-
     public Lead signingUp() {
-        try{leadData = getInputData("\nIntroduce the lead's name: ","\n" +
-                "Introduce the lead's phone number: ", "\n" +
-                "Introduce the lead's email: ", "\n" +
-                "Introduce the lead's company name: ");}
-        catch (NumberFormatException e) {
 
-        }
+        List<String> name = getInputData("\nIntroduce the lead's name: ");
+        Long phoneNumber = validInput("\nIntroduce the lead's phone number: ");
+        List<String> emailAndCompany = getInputData("\nIntroduce the lead's email: ",
+                "\nIntroduce the lead's company name: ");
 
-
-        Lead lead = new Lead(leadData.get(0),Long.parseLong(leadData.get(1)) , leadData.get(2), leadData.get(3));
+        Lead lead = new Lead(name.get(0), phoneNumber , emailAndCompany.get(0), emailAndCompany.get(1));
         return lead;
     }
 
@@ -36,7 +28,22 @@ public class Webinar {
             System.out.println(question);
             inputData.add(scanner.next());
         }
-
         return inputData;
+    }
+
+    private static long validInput(String questions){
+        Scanner myScanner =  new Scanner(System.in);
+        long input = 0;
+
+        while (input <= 0){
+            try {System.out.println(questions);
+                input = myScanner.nextInt();
+            } catch (InputMismatchException ex) {
+                ex.getMessage();
+                System.out.println("INVALID OPTION! Please insert a valid phone number" );
+                myScanner =  new Scanner(System.in);
+            }
+        }
+        return input;
     }
 }

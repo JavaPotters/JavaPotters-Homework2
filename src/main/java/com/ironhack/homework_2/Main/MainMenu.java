@@ -10,118 +10,44 @@ import com.ironhack.homework_2.Enumerations.IndustryEnum;
 import com.ironhack.homework_2.Enumerations.ProductEnum;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
-    public static void main(String[] args) {
+
+    private static CRM crm;
+
+    public MainMenu() {
+        // Create a CRM
+        crm = new CRM();
+        main();
+    }
+
+    public static void main() {
         Webinar webinar = new Webinar();
 
         //Create a Scanner to collect user input
-        Scanner myScanner2 = new Scanner(System.in);
+        Scanner myScanner = new Scanner(System.in);
 
         System.out.println("************* Starting CRM *************");
         System.out.println("What is your name?");
-        String salesAssistName = myScanner2.nextLine();
-        System.out.println("Welcome to the CRM system, " + salesAssistName + ".\n" +
-                "You can type: \n" +
-                "\033[3m- Signing-up:\033[0m to create a lead.\n" +
-                "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
-                "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
-                "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
-                "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
-                "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
-                "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n");
+        String salesAssistName = myScanner.nextLine();
+        System.out.println("Welcome to the CRM system, " + salesAssistName + ".\n" + options);
 
-        CRM crm = new CRM();
-
-        // Get input from the user
 
         while (true) {
-            Scanner myScanner = new Scanner(System.in);
-            System.out.println("What do you want to do, " + salesAssistName + "?");
+            System.out.println("\nWhat do you want to do, " + salesAssistName + "?");
             String userInput = myScanner.nextLine();
-            //add some logic to here to determine what to do based on the userInput
             if(isAKeyWord(userInput)){
+                userInput = userInput.toLowerCase();
                 int id;
                 try{
                     String[] splited = userInput.split(" ");
                     String keyword = splited[0].toLowerCase();
                     switch (keyword){
                         case "convert":
-                            id = Integer.parseInt(splited[1]);
-                            Lead lead = crm.findLead(id);
-                            Contact contact = crm.createContact(lead);
-
-                            System.out.println("How many trucks does the lead want? ");
-                            int productQuantity = myScanner.nextInt();
-
-                            /*
-                            try {System.out.println("How many trucks does the lead want? ");
-                                int productQuantity = myScanner.nextInt();}
-                            catch (Exception e) {
-                                e.getMessage();
-                            }
-                             */
-
-                            // añadir validaciones
-                            System.out.println("Which of our products? \n" +
-                                    "1. HYBRID,\n" +
-                                    "2. FLATBED,\n" +
-                                    "3. BOX");
-
-                            int productTypeInt = myScanner.nextInt();
-                            ProductEnum productEnum = null;
-                            switch (productTypeInt){
-                                case 1:
-                                    productEnum = ProductEnum.HYBRID;
-                                    break;
-                                case 2:
-                                    productEnum = ProductEnum.FLATBED;
-                                    break;
-                                case 3:
-                                    productEnum = ProductEnum.BOX;
-                                    break;
-                            }
-
-                            Opportunity opportunity = crm.createOpportunity(contact, productEnum, productQuantity);
-
-                            // añadir validaciones
-                            System.out.println("Which industry are the products for? \n" +
-                                    "1. PRODUCE\n" +
-                                    "2. ECOMMERCE\n" +
-                                    "3. MANUFACTURING\n" +
-                                    "4. MEDICAL\n" +
-                                    "5. OTHER" );
-
-                            int industryTypeInt = myScanner.nextInt();
-                            IndustryEnum industryEnum = null;
-                            switch (industryTypeInt){
-                                case 1:
-                                    industryEnum = IndustryEnum.PRODUCE;
-                                    break;
-                                case 2:
-                                    industryEnum = IndustryEnum.ECOMMERCE;
-                                    break;
-                                case 3:
-                                    industryEnum = IndustryEnum.MANUFACTURING;
-                                    break;
-                                case 4:
-                                    industryEnum = IndustryEnum.MEDICAL;
-                                    break;
-                                case 5:
-                                    industryEnum = IndustryEnum.OTHER;
-                                    break;
-                            }
-
-                            List<String> companyData = getInputData("How many employees does the contact's company have?",
-                                    "\nIntroduce the city where the contact's company is located.",
-                                    "\nIntroduce the country where the contact's company is located.");
-
-                            Account account = crm.createAccount(industryEnum, Integer.parseInt(companyData.get(0)),
-                                    companyData.get(1), companyData.get(2), contact, opportunity);
-                            crm.deleteLead(lead);
-                            System.out.println("Convert done");
+                            convertMethod(splited);
                             break;
                         case "lookup":
                             id = Integer.parseInt(splited[1]);
@@ -132,13 +58,11 @@ public class MainMenu {
                             id = Integer.parseInt(splited[1]);
                             Opportunity opportunity2 = crm.closeOpportunity("Lost", id);
                             System.out.println("The opportunity with id " + id + "was closed-lost");
-                            // System.out.println(opportunity2.getStatus());
                             break;
                         case "close-won":
                             id = Integer.parseInt(splited[1]);
                             Opportunity opportunity3 = crm.closeOpportunity("Won", id);
                             System.out.println("The opportunity with id " + id + "was closed-won");
-                            // System.out.println(opportunity3.getStatus());
                             break;
                         case "show":
                             String objectType = splited[1];
@@ -149,13 +73,17 @@ public class MainMenu {
                                 System.out.println("List of opportunities:  ");
                                 crm.showListOpportunity();
                             } else{
+                                System.out.println("Invalid option. Show does not have "+objectType+" option, please " +
+                                        "try again. With \033[3mshow leads\033[0m or \033[3mshow opportunities\033[0m");
                                 break;
                             }
                             break;
-                        case "signing-up":
-                            lead = webinar.signingUp();
+                        case "signup":
+                            Lead lead = webinar.signingUp();
                             crm.addLead(lead);
                             break;
+                        case "exit":
+                            System.exit(0);
                     }
                 } catch (ArrayIndexOutOfBoundsException e){
                     System.out.println("Please insert ID");
@@ -164,19 +92,22 @@ public class MainMenu {
             }
             else {
                 System.out.println("Invalid option, please try again.");
-                System.out.println("You can type: \n" +
-                        "\033[3m- Signing-up:\033[0m to create a lead.\n" +
-                        "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
-                        "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
-                        "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
-                        "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
-                        "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
-                        "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n");
+                System.out.println(options);
+                myScanner = new Scanner(System.in);
             }
         }
     }
 
-    private static final String[] keyWords = {"convert", "lookup", "close-lost", "close-won", "show", "signing-up"};
+    private static final String options = "You can type: \n" +
+            "\033[3m- Signup:\033[0m to create a lead.\n" +
+            "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
+            "\033[3m- Convert <leadId>:\033[0m to convert a lead into an opportunity.\n" +
+            "\033[3m- Show opportunities:\033[0m to see the opportunities list.\n" +
+            "\033[3m- Lookup <opportunityId>:\033[0m to find an opportunity.\n" +
+            "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
+            "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n"+
+            "\033[3m- Exit:\033[0m to finish the program.";
+    private static final String[] keyWords = {"convert", "lookup", "close-lost", "close-won", "show", "signup", "exit"};
 
     public static boolean isAKeyWord(String str){
         String[] splited = str.split(" ");
@@ -197,5 +128,92 @@ public class MainMenu {
             inputData.add(scanner.next());
         }
         return inputData;
+    }
+
+    private static int validInput(String questions){
+        Scanner myScanner =  new Scanner(System.in);
+        int input = 0;
+
+        while (input <= 0){
+            try {System.out.println(questions);
+                input = myScanner.nextInt();
+            } catch (InputMismatchException ex) {
+                ex.getMessage();
+                System.out.println("INVALID OPTION! Please insert an int" );
+                myScanner =  new Scanner(System.in);
+            }
+        }
+        return input;
+    }
+
+    private static void convertMethod(String[] splited){
+        int id = Integer.parseInt(splited[1]);
+        Lead lead = crm.findLead(id);
+        Contact contact = crm.createContact(lead);
+
+        int productQuantity = validInput("How many trucks does the lead want?");
+
+        ProductEnum productEnum = null;
+        int productTypeInt;
+        //Validation productType
+        do{
+            productTypeInt = validInput("\nWhich of our products? \n" +
+                    "1. HYBRID,\n" + "2. FLATBED,\n" + "3. BOX");
+            switch (productTypeInt){
+                case 1:
+                    productEnum = ProductEnum.HYBRID;
+                    break;
+                case 2:
+                    productEnum = ProductEnum.FLATBED;
+                    break;
+                case 3:
+                    productEnum = ProductEnum.BOX;
+                    break;
+            }
+            if(productTypeInt > 3){
+                System.out.println("Invalid option, please insert an int between 1 - 3");
+            }
+        } while (productTypeInt > 3);
+
+        Opportunity opportunity = crm.createOpportunity(contact, productEnum, productQuantity);
+
+        int industryTypeInt;
+        IndustryEnum industryEnum = null;
+        //Validation industryType
+        do{
+            industryTypeInt = validInput("\nWhich industry are the products for? \n" +
+                    "1. PRODUCE\n" + "2. ECOMMERCE\n" + "3. MANUFACTURING\n" + "4. MEDICAL\n" +
+                    "5. OTHER");
+            switch (industryTypeInt){
+                case 1:
+                    industryEnum = IndustryEnum.PRODUCE;
+                    break;
+                case 2:
+                    industryEnum = IndustryEnum.ECOMMERCE;
+                    break;
+                case 3:
+                    industryEnum = IndustryEnum.MANUFACTURING;
+                    break;
+                case 4:
+                    industryEnum = IndustryEnum.MEDICAL;
+                    break;
+                case 5:
+                    industryEnum = IndustryEnum.OTHER;
+                    break;
+            }
+            if(industryTypeInt > 5){
+                System.out.println("Invalid option, please insert an int between 1 - 5");
+            }
+        }while (industryTypeInt > 5);
+
+        int numEmployees = validInput("\nHow many employees does the contact's company have?");
+        List<String> companyData = getInputData(
+                "\nIntroduce the city where the contact's company is located.",
+                "\nIntroduce the country where the contact's company is located.");
+
+        Account account = crm.createAccount(industryEnum, numEmployees,
+                companyData.get(0), companyData.get(1), contact, opportunity);
+        crm.deleteLead(lead);
+        System.out.println("Convert done");
     }
 }
