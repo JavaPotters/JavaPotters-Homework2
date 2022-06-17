@@ -26,14 +26,14 @@ public class CRM {
         countLeads = 0;
     }
 
-    // Contact's methods
+    // Contact's methods -------------------------------------------------------------------
 
     public Contact createContact(Lead lead){
         Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
         return contact;
     }
 
-    // Opportunity's methods
+    // Opportunity's methods -----------------------------------------------------------------
 
     public Opportunity createOpportunity(Contact contact, ProductEnum productEnum, int quantity){
         Opportunity opportunity = new Opportunity(productEnum, quantity, contact, StatusEnum.OPEN);
@@ -75,7 +75,7 @@ public class CRM {
         }
     }
 
-    // Lead's methods
+    // Lead's methods --------------------------------------------------------------------
 
     public void addLead(Lead lead) {
         leadList.add(lead);
@@ -119,7 +119,7 @@ public class CRM {
         this.countLeads = countLeads;
     }
 
-    // Account's leads
+    // Account's leads ----------------------------------------------------------------------------
 
     public Account findAccount(String companyName){
         for (Account account: accountList){
@@ -129,7 +129,8 @@ public class CRM {
         }
         return null;
     }
-    public Account createAccount(IndustryEnum industryEnum, int employeeCount, String city, String country, Contact contact, Opportunity opportunity){
+    public Account createAccount(IndustryEnum industryEnum, int employeeCount, String city,
+                                 String country, Contact contact, Opportunity opportunity){
 
         Account account = findAccount(contact.getCompanyName());
 

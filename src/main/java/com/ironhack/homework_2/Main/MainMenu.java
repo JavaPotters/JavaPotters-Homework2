@@ -35,7 +35,6 @@ public class MainMenu {
         String salesAssistName = myScanner.nextLine();
         System.out.println("Welcome to the CRM system, " + salesAssistName + ".\n" + options);
 
-
         while (true) {
             System.out.println("\nWhat do you want to do, " + salesAssistName + "?");
             String userInput = myScanner.nextLine();
@@ -44,8 +43,12 @@ public class MainMenu {
                 int id;
                 try{
                     String[] splited = userInput.split(" ");
-                    String keyword = splited[0].toLowerCase();
+                    String keyword = splited[0].toLowerCase(); // ignore mayus, always lowerCase
                     switch (keyword){
+                        case "signup":
+                            Lead lead = webinar.signingUp();
+                            crm.addLead(lead);
+                            break;
                         case "convert":
                             convertMethod(splited);
                             break;
@@ -53,16 +56,6 @@ public class MainMenu {
                             id = Integer.parseInt(splited[1]);
                             Opportunity opportunity1 = crm.lookUpOpportunity(id);
                             System.out.println(opportunity1);
-                            break;
-                        case "close-lost":
-                            id = Integer.parseInt(splited[1]);
-                            Opportunity opportunity2 = crm.closeOpportunity("Lost", id);
-                            System.out.println("The opportunity with id " + id + "was closed-lost");
-                            break;
-                        case "close-won":
-                            id = Integer.parseInt(splited[1]);
-                            Opportunity opportunity3 = crm.closeOpportunity("Won", id);
-                            System.out.println("The opportunity with id " + id + "was closed-won");
                             break;
                         case "show":
                             String objectType = splited[1];
@@ -78,9 +71,19 @@ public class MainMenu {
                                 break;
                             }
                             break;
-                        case "signup":
-                            Lead lead = webinar.signingUp();
-                            crm.addLead(lead);
+                        case "close-lost":
+                            id = Integer.parseInt(splited[1]);
+                            Opportunity opportunity2 = crm.closeOpportunity("Lost", id);
+                            if(opportunity2!=null){
+                                System.out.println("The opportunity with id " + id + "was closed-lost");
+                            }
+                            break;
+                        case "close-won":
+                            id = Integer.parseInt(splited[1]);
+                            Opportunity opportunity3 = crm.closeOpportunity("Won", id);
+                            if(opportunity3!=null) {
+                                System.out.println("The opportunity with id " + id + "was closed-won");
+                            }
                             break;
                         case "exit":
                             System.exit(0);
@@ -98,6 +101,7 @@ public class MainMenu {
         }
     }
 
+    // Static string with options to show for screen
     private static final String options = "You can type: \n" +
             "\033[3m- Signup:\033[0m to create a lead.\n" +
             "\033[3m- Show leads:\033[0m  to see the leads list.\n" +
@@ -107,8 +111,11 @@ public class MainMenu {
             "\033[3m- Close-won <opportunityId>:\033[0m to close an opportunity that was won.\n" +
             "\033[3m- Close-lost <opportunityId>:\033[0m to close an opportunity that was lost.\n"+
             "\033[3m- Exit:\033[0m to finish the program.";
+
+    // Key words to enter in the switch-case
     private static final String[] keyWords = {"convert", "lookup", "close-lost", "close-won", "show", "signup", "exit"};
 
+    // valid if a string is a keyword
     public static boolean isAKeyWord(String str){
         String[] splited = str.split(" ");
         String word = splited[0].toLowerCase();
@@ -120,6 +127,7 @@ public class MainMenu {
         return false;
     }
 
+    // read questions, and return a list of strings
     private static List<String> getInputData(String... questions) {
         Scanner scanner = new Scanner(System.in);
         List<String> inputData = new ArrayList<>();
@@ -130,6 +138,7 @@ public class MainMenu {
         return inputData;
     }
 
+    // valid if the user's input is a int
     private static int validInput(String questions){
         Scanner myScanner =  new Scanner(System.in);
         int input = 0;
@@ -146,6 +155,7 @@ public class MainMenu {
         return input;
     }
 
+    // option convert is a method because is larger
     private static void convertMethod(String[] splited){
         int id = Integer.parseInt(splited[1]);
         Lead lead = crm.findLead(id);
