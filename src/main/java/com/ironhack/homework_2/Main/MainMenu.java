@@ -1,7 +1,7 @@
 package com.ironhack.homework_2.Main;
 
 import com.ironhack.homework_2.CRM.CRM;
-import com.ironhack.homework_2.CRM.Webinar;
+import com.ironhack.homework_2.Classes.Webinar;
 import com.ironhack.homework_2.Classes.Account;
 import com.ironhack.homework_2.Classes.Contact;
 import com.ironhack.homework_2.Classes.Lead;

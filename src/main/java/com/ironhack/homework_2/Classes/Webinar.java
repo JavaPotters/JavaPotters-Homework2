@@ -1,4 +1,4 @@
-package com.ironhack.homework_2.CRM;
+package com.ironhack.homework_2.Classes;
 
 import com.ironhack.homework_2.Classes.Lead;
 
