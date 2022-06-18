@@ -75,14 +75,14 @@ public class MainMenu {
                             id = Integer.parseInt(splited[1]);
                             Opportunity opportunity2 = crm.closeOpportunity("Lost", id);
                             if(opportunity2!=null){
-                                System.out.println("The opportunity with id " + id + "was closed-lost");
+                                System.out.println("The opportunity with id " + id + " was closed-lost.");
                             }
                             break;
                         case "close-won":
                             id = Integer.parseInt(splited[1]);
                             Opportunity opportunity3 = crm.closeOpportunity("Won", id);
                             if(opportunity3!=null) {
-                                System.out.println("The opportunity with id " + id + "was closed-won");
+                                System.out.println("The opportunity with id " + id + " was closed-won.");
                             }
                             break;
                         case "exit":

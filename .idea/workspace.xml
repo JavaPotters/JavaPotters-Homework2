@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="956b99ba-96dd-468c-b354-b2e6c763896d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="956b99ba-96dd-468c-b354-b2e6c763896d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +50,7 @@
       <recent name="com.ironhack.homework_2.CRM" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CRMTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ironhack.homework_2.Main.Main" />
       <module name="JavaPotters-Homework2" />
@@ -131,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CRMTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CRMTest" />
         <item itemvalue="JUnit.CRMTest.lookUpOpportunity" />
         <item itemvalue="JUnit.CRMTest.createAccount" />
         <item itemvalue="JUnit.CRMTest.findAccount" />
