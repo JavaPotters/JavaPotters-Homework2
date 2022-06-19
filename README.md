@@ -12,6 +12,7 @@
 
 Bienvenida/o a un nuevo proyecto de Java del grupo JavaPotters. 
 En este proyecto realizamos un simulador de un CRM para una empresa ficticia. 
+
 ------------------------------------------------------------------------------------------------------------------------------
 
 ### ¿Cómo usarlo?
@@ -56,13 +57,13 @@ Con todo ello hemos alcanzado una cobertura de líneas del código del 76%.
 •	El proyecto ha sido realizado por partes iguales por las 4 miembros del grupo, debido a que nuestra dinámica de trabajo ha consistido en realizar reuniones virtuales durante todo el proyecto. No nos hemos dividido el trabajo, sino que lo hemos ido haciendo de forma simultánea en conjunto. Íbamos turnándonos para escribir el código pero el resto del equipo participaba de la escritura del mismo a la vez.
 •	Al inicio del proyecto realizamos dos diagramas; uno de clases y otro de casos de uso, tal como hemos visto en clase esta semana, que, adjuntamos a continuación y también encontrarás en nuestro repositorio: 
 
-## DIAGRAMA CASOS DE USO:
+### DIAGRAMA CASOS DE USO:
 
 <p align="center">
     <img src = https://github.com/JavaPotters/JavaPotters-Homework2/blob/main/diagrama%20casos%20de%20uso%20Homework2JavaPotters.png width="450">
 </p>
 
-## DIAGRAMA CLASES:
+### DIAGRAMA CLASES:
 
 <p align="center">
     <img src = https://github.com/JavaPotters/JavaPotters-Homework2/blob/main/diagrama%20de%20clases%20Homework2%20JavaPotters.png width="450">
